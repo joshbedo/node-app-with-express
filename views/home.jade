@@ -1,4 +1,26 @@
-extends layout
+//extends layout
 
+- var name = "Josh";
+- var followerCount = 2;
+
+- if(followerCount === 0){
+	p you have no followers.
+- } else if(followerCount === 1){
+	p you have one follower.
+- } else {
+	p you have #{followerCount} followers.
+- }
+
+p
+	if followerCount === 0
+		| You have no followers
+	else if followerCount === 1 
+		| You have one follower
+	else
+		| You have #{followerCount} followers.
+
+		
 block content
-	h2= title
+	h2.title= title
+	h3.author= name	
+	a(href="/other", data-role="button") Go to Other
