@@ -21,9 +21,22 @@ app.configure(function(){
 });
 
 app.get("/", function(req, res){
+  //res.send(req.acceptsCharset('uft-8') ? 'yes' : 'no');
+  //res.send(req.acceptsLanguage('fr') ? 'yes' : 'no');
+  //res.send(404, "not found");
+  res.format({
+    html: function(){ res.send("<h1> Body</h1>"); },
+    json: function(){ res.json({ message: "body"}); },
+    text: function(){ res.send("body"); }
+  });
+
+ //res.json({ message: "some message here"});
   res.render('home', { title: "Building web apps for fun in Node with Express" });
 });
-
+app.get("/name/:name?", function(req, res){
+  //res.send(req.params.name);
+  res.send(req.param('name', 'default value'));
+});
 app.get("/users/:userId", function(req, res){
   res.send("Hello, User #" + req.params.userId);
 });
